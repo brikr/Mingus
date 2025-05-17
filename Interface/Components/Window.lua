@@ -6,7 +6,7 @@ function Mingus:CreateWindow()
   window.background = window:CreateTexture(nil, "OVERLAY")
   window.background:SetAllPoints()
   window.background:SetTexture("Interface/Buttons/WHITE8x8")
-  window.background:SetColorTexture(Mingus.UITheme.surface:GetRGBA())
+  window.background:SetColorTexture(Mingus.theme.surface:GetRGBA())
 
   window:EnableMouse(true)
 

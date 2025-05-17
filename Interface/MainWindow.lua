@@ -30,18 +30,18 @@ function Mingus:InitializeMainWindow()
   tabFrame.background = tabFrame:CreateTexture(nil, "ARTWORK")
   tabFrame.background:SetAllPoints()
   tabFrame.background:SetTexture("Interface/Buttons/WHITE8x8")
-  tabFrame.background:SetColorTexture(Mingus.UITheme.surfaceContainer:GetRGBA())
+  tabFrame.background:SetColorTexture(Mingus.theme.surfaceContainer:GetRGBA())
 
   local updateTab = Mingus:CreateButton(Mingus.window, "Update", function() ShowPane("update") end)
-  updateTab.texture:SetColorTexture(Mingus.UITheme.surfaceContainer:GetRGBA())
+  updateTab.texture:SetColorTexture(Mingus.theme.surfaceContainer:GetRGBA())
   updateTab:SetPoint("TOPLEFT", Mingus.window, "TOPLEFT", 8, -8)
 
   local checkTab = Mingus:CreateButton(Mingus.window, "Group check", function() ShowPane("check") end)
-  checkTab.texture:SetColorTexture(Mingus.UITheme.surfaceContainer:GetRGBA())
+  checkTab.texture:SetColorTexture(Mingus.theme.surfaceContainer:GetRGBA())
   checkTab:SetPoint("TOPLEFT", updateTab, "TOPRIGHT", 8, 0)
 
   local settingsTab = Mingus:CreateButton(Mingus.window, "Settings", function() ShowPane("settings") end)
-  settingsTab.texture:SetColorTexture(Mingus.UITheme.surfaceContainer:GetRGBA())
+  settingsTab.texture:SetColorTexture(Mingus.theme.surfaceContainer:GetRGBA())
   settingsTab:SetPoint("TOPLEFT", checkTab, "TOPRIGHT", 8, 0)
 
   Mingus.updatePane = CreateFrame("Frame", nil, Mingus.window)

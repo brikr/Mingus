@@ -5,7 +5,7 @@ function Mingus:CreateButton(parent, text, OnClick, variant)
 
   local button = CreateFrame("Button", nil, parent)
 
-  button.backgroundColor = Mingus.UITheme.primary
+  button.backgroundColor = Mingus.theme.primary
 
   button:SetScript("OnClick", OnClick)
 
@@ -15,11 +15,11 @@ function Mingus:CreateButton(parent, text, OnClick, variant)
 
   button.highlight = button:CreateTexture(nil, "HIGHLIGHT")
   button.highlight:SetAllPoints()
-  button.highlight:SetColorTexture(Mingus.UITheme.highlight:GetRGBA())
+  button.highlight:SetColorTexture(Mingus.theme.highlight:GetRGBA())
 
   local label = button:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
   label:SetPoint("CENTER")
-  label:SetTextColor(Mingus.UITheme.onPrimary:GetRGBA())
+  label:SetTextColor(Mingus.theme.onPrimary:GetRGBA())
   label:SetText(text)
   button:SetFontString(label)
 

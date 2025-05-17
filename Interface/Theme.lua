@@ -2,7 +2,7 @@ local _, Mingus = ...
 
 local hex = CreateColorFromHexString
 
-Mingus.UITheme = {
+Mingus.theme = {
   surface = hex("ff121418"),
   onSurface = hex("d6ffffff"),
   surfaceContainer = hex("ff211f26"),

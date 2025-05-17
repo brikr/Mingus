@@ -28,6 +28,6 @@ function Mingus:MaybeShowOldAddOnWarning()
     text:SetWidth(width - 16)
     text:SetText(
       "The old guild addon, MythicMinusMedia, is still active and will fuck your shit up if you have both.|n|nUninstall or disable it.")
-    text:SetTextColor(Mingus.UITheme.onSurface:GetRGBA())
+    text:SetTextColor(Mingus.theme.onSurface:GetRGBA())
   end
 end
