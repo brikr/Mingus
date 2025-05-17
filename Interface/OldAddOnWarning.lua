@@ -17,7 +17,6 @@ function Mingus:MaybeShowOldAddOnWarning()
     window:SetWidth(width)
     window:SetHeight(height)
     window:SetFrameStrata("DIALOG")
-    window:SetIgnoreParentAlpha(true)
     window:SetPoint("CENTER", UIParent, "CENTER", 0, height / 2)
 
     disableButton = Mingus:CreateButton(window, "Disable and reload", DisableOldAddOn)
@@ -30,7 +29,5 @@ function Mingus:MaybeShowOldAddOnWarning()
     text:SetText(
       "The old guild addon, MythicMinusMedia, is still active and will fuck your shit up if you have both.|n|nUninstall or disable it.")
     text:SetTextColor(Mingus.UITheme.onSurface:GetRGBA())
-
-    window:Show()
   end
 end

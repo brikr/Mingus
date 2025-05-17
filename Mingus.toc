@@ -15,6 +15,6 @@ Interface/Components/Button.lua
 Interface/Components/Window.lua
 
 Interface/OldAddOnWarning.lua
-Interface/Interface.lua
+Interface/MainWindow.lua
 
 Mingus.lua
