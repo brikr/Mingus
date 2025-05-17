@@ -1,6 +1,8 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
+const WAGO_API_BASE = 'https://data.wago.io';
+
 interface WeakAuraInput {
   name: string;
   slug: string;
@@ -48,10 +50,10 @@ async function main() {
 
     try {
       const { codeURL } = await fetchJSON<WagoData>(
-        `https://data.wago.io/lookup/wago?id=${slug}`
+        `${WAGO_API_BASE}/lookup/wago?id=${slug}`
       );
 
-      const codeData = await fetchJSON<WagoCodeData>(codeURL);
+      const codeData = await fetchJSON<WagoCodeData>(`${WAGO_API_BASE}${codeURL}`);
       const { encoded, version } = codeData;
 
       output.push({
@@ -67,10 +69,9 @@ async function main() {
   let lua = 'local _, Mingus = ...\n'
   lua += 'Mingus.wa = {\n';
   for (const aura of output) {
-    lua += `  {\n`;
-    lua += `    name = ${JSON.stringify(aura.name)},\n`;
+    lua += `  [${JSON.stringify(aura.name)}] = {\n`;
     lua += `    version = ${aura.version},\n`;
-    lua += `    import = ${JSON.stringify(aura.data)}\n`;
+    lua += `    import = ${JSON.stringify(aura.data)},\n`;
     lua += `  },\n`;
   }
   lua += '}\n';
