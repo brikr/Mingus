@@ -2,12 +2,11 @@ name: Fetch WeakAuras
 
 on:
   workflow_dispatch:
-  # TODO: re-enable after manual testing
-  # push:
-  #   paths:
-  #     - wago-fetcher/**
-  # schedule:
-  #   - cron: '0 15 * * *'
+  push:
+    paths:
+      - wago-fetcher/**
+  schedule:
+    - cron: '0 15 * * *'
 
 jobs:
   fetch-weakauras:
