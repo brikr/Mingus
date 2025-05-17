@@ -1,0 +1,78 @@
+name: Fetch WeakAuras
+
+on:
+  workflow_dispatch:
+  # TODO: re-enable after manual testing
+  # push:
+  #   paths:
+  #     - wago-fetcher/**
+  # schedule:
+  #   - cron: '0 15 * * *'
+
+jobs:
+  fetch-weakauras:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '22'
+
+    - name: Install TypeScript
+      run: npm install -g typescript
+
+    - name: Compile TypeScript
+      working-directory: wago-fetcher
+      run: tsc
+
+    - name: Run WeakAura Fetch Script
+      run: node wago-fetcher/dist/fetch-weakauras.js
+
+    - name: Get Latest Tag
+      id: get-latest-tag
+      uses: actions-ecosystem/action-get-latest-tag@v1
+      with:
+        semver_only: true
+
+    - name: Bump Patch Version
+      id: bump-version
+      uses: actions-ecosystem/action-bump-semver@v1
+      with:
+        current_version: ${{ steps.get-latest-tag.outputs.tag }}
+        level: patch
+
+    - name: Commit and Tag
+      id: commit_and_tag
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git add WeakAuras/WeakAurasImported.lua
+        if git diff --cached --quiet; then
+          echo "No changes to commit"
+          echo "tag_created=false" >> $GITHUB_OUTPUT
+        else
+          git commit -m "[bot] WeakAuras update"
+          git tag v${{ steps.bump-version.outputs.new_version }}
+          git push
+          git push origin v${{ steps.bump-version.outputs.new_version }}
+          echo "tag_created=true" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Create GitHub Release
+      if: steps.commit_and_tag.outputs.tag_created == 'true'
+      id: create_release
+      uses: actions/create-release@v1
+      with:
+        tag_name: v${{ steps.bump-version.outputs.new_version }}
+        release_name: Release v${{ steps.bump-version.outputs.new_version }} (automated)
+        body: Automated WeakAuras update and patch version bump.
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+

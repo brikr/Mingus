@@ -17,4 +17,7 @@ Interface/Components/Window.lua
 Interface/OldAddOnWarning.lua
 Interface/MainWindow.lua
 
+WeakAuras/WeakAurasImported.lua
+WeakAuras/WeakAurasMetadata.lua
+
 Mingus.lua
