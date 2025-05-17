@@ -22,15 +22,13 @@ jobs:
       with:
         node-version: '22'
 
-    - name: Install TypeScript
-      run: npm install -g typescript
-
-    - name: Compile TypeScript
+    - name: NPM Install
       working-directory: wago-fetcher
-      run: tsc
+      run: npm install
 
     - name: Run WeakAura Fetch Script
-      run: node wago-fetcher/dist/fetch-weakauras.js
+      working-directory: wago-fetcher
+      run: npm run start
 
     - name: Get Latest Tag
       id: get-latest-tag
