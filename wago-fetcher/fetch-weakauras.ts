@@ -77,6 +77,7 @@ async function main() {
   for (const aura of output) {
     lua += `  [${JSON.stringify(aura.name)}] = {\n`;
     lua += `    version = ${aura.version},\n`;
+    lua += `    uid = ${JSON.stringify(aura.uid)},\n`
     lua += `    import = ${JSON.stringify(aura.data)},\n`;
     lua += `  },\n`;
   }
