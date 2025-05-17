@@ -11,6 +11,7 @@ interface WeakAuraInput {
 interface WeakAuraOutput {
   name: string;
   version: number;
+  uid: string;
   data: string;
 }
 
@@ -21,6 +22,7 @@ interface WagoData {
 
 interface WagoCodeData {
   encoded: string;
+  json: string;
   version: number;
 }
 
@@ -54,11 +56,15 @@ async function main() {
       );
 
       const codeData = await fetchJSON<WagoCodeData>(`${WAGO_API_BASE}${codeURL}`);
-      const { encoded, version } = codeData;
+      const { encoded, json, version } = codeData;
+
+      const tableData = JSON.parse(json);
+      const uid = tableData.d.uid;
 
       output.push({
         name,
         version,
+        uid,
         data: encoded
       });
     } catch (err: any) {
