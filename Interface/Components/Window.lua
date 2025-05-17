@@ -1,7 +1,7 @@
 local _, Mingus = ...
 
-function Mingus:CreateWindow()
-  local window = CreateFrame("Frame", nil, UIParent)
+function Mingus:CreateWindow(name)
+  local window = CreateFrame("Frame", name, UIParent)
 
   window.background = window:CreateTexture(nil, "OVERLAY")
   window.background:SetAllPoints()

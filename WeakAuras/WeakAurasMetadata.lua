@@ -13,33 +13,46 @@ local _, Mingus = ...
 local waMetadata = {
   -- Liquid
   ["LiquidWeakAuras"] = {
+    description = "Libraries and shared functions used by Liquid stuff",
     auraUpdater = true,
   },
   ["Liquid - Liberation of Undermine"] = {
+    description =
+    "Liquid's Undermine pack. Contains both assignments and mechanic auras. The mechanic auras are set to Load: Never by default.",
     auraUpdater = true,
   },
-  ["Liquid Anchors (don't rename these)"] = {
-    auraUpdater = true,
+  ["Liquid - Raid Anchors"] = {
     displayName = "Liquid Anchors",
+    description =
+    "Anchors for Liquid raid auras. Use these to change where you want Liquid auras to show on your screen.",
+    auraUpdater = true,
   },
   -- Northern Sky we want to keep
   ["Northern Sky - Database & Functions"] = {
+    description =
+    "Libraries and shared functions used by Northern Sky stuff. This is only needed if you use the External alert/request auras.",
     optional = true,
   },
   ["Northern Sky Externals"] = {
+    description = "Lets you request an external via a macro. This is only needed if the fight we're on relies on it.",
     optional = true,
   },
   ["External Alert / Spell Requests (Power Infusion Innervate etc.)"] = {
     displayName = "Northern Sky Externals Alert",
+    description =
+    "Lets you receive external requests from macro pushers. This is only needed if the fight we're on relies on it and you are a healer or paladin.",
     optional = true,
   },
   -- Other utilities
   ["Kaze MRT Timers (Retail+Classic)"] = {
     displayName = "Kaze MRT Timers",
+    description =
+    "Shows text/icon popups during combat based on MRT note assignments. If you use TimelineReminders or the functionality built into MRT, you don't need this.",
     optional = true,
   },
   ["Interrupt Anchor - All Bosses"] = {
     displayName = "Interrupt Anchor",
+    description = "Supports interrupt assignments via MRT note.",
   },
   -- Obsolete
   ["Mythic- Core"] = {
@@ -63,4 +76,9 @@ for name, metadata in pairs(waMetadata) do
     -- No imported data, metadata only
     Mingus.wa[name] = metadata
   end
+end
+
+-- Set displayName on all auras
+for name, aura in pairs(Mingus.wa) do
+  if not aura.displayName then aura.displayName = name end
 end

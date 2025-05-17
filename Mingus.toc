@@ -15,6 +15,7 @@ Interface/Components/Button.lua
 Interface/Components/Window.lua
 
 Interface/OldAddOnWarning.lua
+Interface/UpdatePane.lua
 Interface/MainWindow.lua
 
 WeakAuras/WeakAurasImported.lua
