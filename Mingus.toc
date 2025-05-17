@@ -1,0 +1,20 @@
+## Interface: 110105
+
+## Title: Mingus
+## Author: Qm
+## IconTexture: Interface\AddOns\Mingus\Media\Textures\MMLogo.blp
+## SavedVariables: MingusSaved
+## Dependencies: WeakAuras
+## OptionalDeps: CustomNames, Grid2, ElvUI, Cell, MythicMinusMedia, VuhDo
+## Category: Mythic Minus
+
+embeds.xml
+
+Interface/Theme.lua
+Interface/Components/Button.lua
+Interface/Components/Window.lua
+
+Interface/OldAddOnWarning.lua
+Interface/Interface.lua
+
+Mingus.lua
