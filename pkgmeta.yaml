@@ -1,0 +1,6 @@
+ignore:
+  - .github
+  - .vscode
+  - wago-fetcher
+  - .gitignore
+  - LICENSE

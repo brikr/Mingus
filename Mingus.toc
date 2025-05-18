@@ -2,6 +2,7 @@
 
 ## Title: Mingus
 ## Author: Qm
+## Version: @project-version@
 ## IconTexture: Interface\AddOns\Mingus\Media\Textures\MMLogo.blp
 ## SavedVariables: MingusSaved
 ## Dependencies: WeakAuras
@@ -17,6 +18,7 @@ Interface/Components/Window.lua
 Interface/OldAddOnWarning.lua
 Interface/UpdatePane.lua
 Interface/WarningsPane.lua
+Interface/SettingsPane.lua
 Interface/MainWindow.lua
 
 WeakAuras/WeakAurasImported.lua
