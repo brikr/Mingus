@@ -3,4 +3,5 @@ ignore:
   - .vscode
   - wago-fetcher
   - .gitignore
+  - development.sh
   - LICENSE
