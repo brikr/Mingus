@@ -27,6 +27,7 @@ eventFrame:SetScript("OnEvent", function(_, event, ...)
       )
       LDBIcon:Register("Mythic Minus", Mingus.LDB, MingusSaved.minimap)
 
+      Mingus:InitializeWeakAuras()
       Mingus:InitializeMainWindow()
 
       Mingus:MaybeShowOldAddOnWarning()

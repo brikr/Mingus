@@ -9,4 +9,5 @@ Mingus.theme = {
   primary = hex("ff6750a4"),
   onPrimary = hex("d6ffffff"),
   highlight = hex("20ffffff"),
+  success = hex("ff66bb6a"),
 }

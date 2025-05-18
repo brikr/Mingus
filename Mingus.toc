@@ -20,5 +20,6 @@ Interface/MainWindow.lua
 
 WeakAuras/WeakAurasImported.lua
 WeakAuras/WeakAurasMetadata.lua
+WeakAuras/WeakAuras.lua
 
 Mingus.lua

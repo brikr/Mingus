@@ -1,8 +1,6 @@
 local _, Mingus = ...
 
-function Mingus:CreateButton(parent, text, OnClick, variant)
-  if not variant then variant = "primary" end
-
+function Mingus:CreateButton(parent, text, OnClick)
   local button = CreateFrame("Button", nil, parent)
 
   button.backgroundColor = Mingus.theme.primary
@@ -24,6 +22,11 @@ function Mingus:CreateButton(parent, text, OnClick, variant)
   button:SetFontString(label)
 
   button:SetSize(label:GetUnboundedStringWidth() + 16, 24)
+
+  function button:SetText(text)
+    label:SetText(text)
+    button:SetSize(label:GetUnboundedStringWidth() + 16, 24)
+  end
 
   return button
 end

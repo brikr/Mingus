@@ -10,7 +10,7 @@ local _, Mingus = ...
 -- Metadata is merged with the imported data. there might be WAs that only have metadata and don't have import strings
 -- (e.g. obsolete ones)
 
-local waMetadata = {
+Mingus.waMetadata = {
   -- Liquid
   ["LiquidWeakAuras"] = {
     description = "Libraries and shared functions used by Liquid stuff",
@@ -54,6 +54,10 @@ local waMetadata = {
     displayName = "Interrupt Anchor",
     description = "Supports interrupt assignments via MRT note.",
   },
+  -- Guild raid pack
+  ["M- Undermine"] = {
+    description = "Guild-specific Undermine pack",
+  },
   -- Obsolete
   ["Mythic- Core"] = {
     obsolete = true,
@@ -66,19 +70,3 @@ local waMetadata = {
     obsolete = true,
   },
 }
-
-for name, metadata in pairs(waMetadata) do
-  if Mingus.wa[name] then
-    for mdKey, mdValue in pairs(waMetadata[name]) do
-      Mingus.wa[name][mdKey] = mdValue
-    end
-  else
-    -- No imported data, metadata only
-    Mingus.wa[name] = metadata
-  end
-end
-
--- Set displayName on all auras
-for name, aura in pairs(Mingus.wa) do
-  if not aura.displayName then aura.displayName = name end
-end
