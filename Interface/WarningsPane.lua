@@ -25,6 +25,8 @@ local function WarningRowElementInitializer(row, warning)
 end
 
 function Mingus:RefreshWarningsPane()
+  if not dataProvider then return end
+
   dataProvider:Flush()
   -- add all warnings to dataprovider
   for _, warning in ipairs(Mingus.warnings) do
@@ -46,6 +48,7 @@ function Mingus:InitializeWarningsPane()
   local scrollBar = CreateFrame("EventFrame", nil, Mingus.warningsPane, "MinimalScrollBar")
   scrollBar:SetPoint("TOPLEFT", scrollFrame, "TOPRIGHT", 0, -8)
   scrollBar:SetPoint("BOTTOMRIGHT", scrollFrame, "BOTTOMRIGHT", 24, 8)
+  scrollBar:SetHideIfUnscrollable(true)
 
   dataProvider = CreateDataProvider()
   local scrollView = CreateScrollBoxListLinearView()
