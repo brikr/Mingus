@@ -1,6 +1,7 @@
 local _, Mingus = ...
 
 local rowHeight = 80
+local dataProvider
 
 local function GetAuraButtonText(aura)
   if not Mingus:IsAuraInstalled(aura) then
@@ -13,8 +14,11 @@ local function GetAuraButtonText(aura)
 end
 
 local function HandleAuraButtonClick(aura)
-  print("clicked", aura.displayName)
-  Mingus:ImportAura(aura)
+  Mingus:ImportAura(aura, function()
+    Mingus:RefreshUpdatePaneEntry(aura.uid)
+    Mingus:EnumerateWarnings()
+    Mingus:UpdateMinimapIcon()
+  end)
 end
 
 local function AuraRowElementInitializer(row, aura)
@@ -69,6 +73,19 @@ local function AuraRowElementInitializer(row, aura)
   end
 end
 
+-- remove then re-add so it re-draws. seems hacky but i couldn't find another way
+function Mingus:RefreshUpdatePaneEntry(uid)
+  local aura
+  dataProvider:RemoveByPredicate(function(data)
+    if data.uid == uid then
+      aura = data
+      return true
+    end
+    return false
+  end)
+  if aura then dataProvider:Insert(aura) end
+end
+
 function Mingus:InitializeUpdatePane()
   local scrollFrame = CreateFrame("Frame", nil, Mingus.updatePane, "WowScrollBoxList")
   scrollFrame:SetPoint("TOPLEFT", Mingus.updatePane, "TOPLEFT")
@@ -78,7 +95,7 @@ function Mingus:InitializeUpdatePane()
   scrollBar:SetPoint("TOPLEFT", scrollFrame, "TOPRIGHT", 0, -8)
   scrollBar:SetPoint("BOTTOMRIGHT", scrollFrame, "BOTTOMRIGHT", 24, 8)
 
-  local dataProvider = CreateDataProvider()
+  dataProvider = CreateDataProvider()
   local scrollView = CreateScrollBoxListLinearView()
   scrollView:SetDataProvider(dataProvider)
 
@@ -101,27 +118,11 @@ function Mingus:InitializeUpdatePane()
     end
   )
 
+  -- add all WAs to dataprovider
   for _, aura in pairs(Mingus.wa) do
     -- Only show importable and non-obsolete auras
     if aura.import and not aura.obsolete then
       dataProvider:Insert(aura)
     end
   end
-
-  -- add all WAs to dataprovider
-
-  -- local lastRow -- used for anchoring
-  -- for _, aura in pairs(Mingus.wa) do
-  --   local row = CreateAuraRow(aura)
-  --   if not lastRow then
-  --     -- First row anchors to top of update pane
-  --     row:SetPoint("TOPLEFT", Mingus.updatePane, "TOPLEFT")
-  --     row:SetPoint("TOPRIGHT", Mingus.updatePane, "TOPRIGHT")
-  --   else
-  --     -- Subsequent rows anchor to bottom of previous row
-  --     row:SetPoint("TOPLEFT", lastRow, "BOTTOMLEFT")
-  --     row:SetPoint("TOPRIGHT", lastRow, "BOTTOMRIGHT")
-  --   end
-  --   lastRow = row
-  -- end
 end

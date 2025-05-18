@@ -16,10 +16,14 @@ Interface/Components/Window.lua
 
 Interface/OldAddOnWarning.lua
 Interface/UpdatePane.lua
+Interface/WarningsPane.lua
 Interface/MainWindow.lua
 
 WeakAuras/WeakAurasImported.lua
 WeakAuras/WeakAurasMetadata.lua
 WeakAuras/WeakAuras.lua
+
+MinimapIcon.lua
+Warnings.lua
 
 Mingus.lua

@@ -17,11 +17,13 @@ function Mingus:IsAuraUpToDate(aura)
     return true
   end
 
-  local installedVersion = WeakAuras.GetData(installedUIDToID[aura.uid]).version
+  local data = WeakAuras.GetData(installedUIDToID[aura.uid])
+  if not data then return false end
+  local installedVersion = data.version
   return installedVersion >= aura.version
 end
 
-function Mingus:ImportAura(aura)
+function Mingus:ImportAura(aura, callbackFunc)
   WeakAuras.Import(
     aura.import,
     nil,
@@ -29,6 +31,7 @@ function Mingus:ImportAura(aura)
       if not success then return end
 
       installedUIDToID[aura.uid] = id
+      callbackFunc(id)
     end
   )
 end
@@ -65,7 +68,10 @@ function Mingus:InitializeWeakAuras()
 
         if uid then
           installedUIDToID[uid] = data.id
+          Mingus:RefreshUpdatePaneEntry(uid)
         end
+        Mingus:EnumerateWarnings()
+        Mingus:UpdateMinimapIcon()
       end
     )
 
@@ -89,7 +95,10 @@ function Mingus:InitializeWeakAuras()
 
         if uid then
           installedUIDToID[uid] = nil
+          Mingus:RefreshUpdatePaneEntry(uid)
         end
+        Mingus:EnumerateWarnings()
+        Mingus:UpdateMinimapIcon()
       end
     )
   end

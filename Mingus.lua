@@ -1,8 +1,5 @@
 local _, Mingus = ...
 
-local LDB = LibStub("LibDataBroker-1.1")
-local LDBIcon = LibStub("LibDBIcon-1.0")
-
 -- Debug: make Mingus global so I can /dump it
 _G["Mingus"] = Mingus
 
@@ -14,22 +11,12 @@ eventFrame:SetScript("OnEvent", function(_, event, ...)
 
     if addOnName == "Mingus" then
       if not MingusSaved then MingusSaved = {} end
-      if not MingusSaved.minimap then MingusSaved.minimap = {} end
-
-      Mingus.LDB = LDB:NewDataObject(
-        "Mythic Minus",
-        {
-          type = "data source",
-          text = "Mythic Minus",
-          icon = [[Interface\AddOns\Mingus\Media\Textures\minimap.tga]],
-          OnClick = function() Mingus.window:SetShown(not Mingus.window:IsShown()) end
-        }
-      )
-      LDBIcon:Register("Mythic Minus", Mingus.LDB, MingusSaved.minimap)
 
       Mingus:InitializeWeakAuras()
       Mingus:InitializeMainWindow()
 
+      Mingus:EnumerateWarnings()
+      Mingus:InitializeMinimapIcon()
       Mingus:MaybeShowOldAddOnWarning()
     end
   end

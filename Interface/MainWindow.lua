@@ -7,12 +7,15 @@ local function ShowPane(pane)
   Mingus.updatePane:Hide()
   Mingus.checkPane:Hide()
   Mingus.settingsPane:Hide()
+  Mingus.warningsPane:Hide()
   if pane == "update" then
     Mingus.updatePane:Show()
   elseif pane == "check" then
     Mingus.checkPane:Show()
   elseif pane == "settings" then
     Mingus.settingsPane:Show()
+  elseif pane == "warnings" then
+    Mingus.warningsPane:Show()
   end
 end
 
@@ -44,6 +47,10 @@ function Mingus:InitializeMainWindow()
   settingsTab.texture:SetColorTexture(Mingus.theme.surfaceContainer:GetRGBA())
   settingsTab:SetPoint("TOPLEFT", checkTab, "TOPRIGHT", 8, 0)
 
+  local warningsTab = Mingus:CreateButton(tabFrame, "Warnings", function() ShowPane("warnings") end)
+  warningsTab.texture:SetColorTexture(Mingus.theme.surfaceContainer:GetRGBA())
+  warningsTab:SetPoint("TOPLEFT", settingsTab, "TOPRIGHT", 8, 0)
+
   Mingus.updatePane = CreateFrame("Frame", "MingusUpdatePane", Mingus.window)
   Mingus.updatePane:SetPoint("TOPLEFT", tabFrame, "BOTTOMLEFT")
   Mingus.updatePane:SetPoint("BOTTOMRIGHT", Mingus.window, "BOTTOMRIGHT")
@@ -55,6 +62,10 @@ function Mingus:InitializeMainWindow()
   Mingus.settingsPane = CreateFrame("Frame", "MingusSettingsPane", Mingus.window)
   Mingus.settingsPane:SetPoint("TOPLEFT", tabFrame, "BOTTOMLEFT")
   Mingus.settingsPane:SetPoint("BOTTOMRIGHT", Mingus.window, "BOTTOMRIGHT")
+
+  Mingus.warningsPane = CreateFrame("Frame", "MingusWarningsPane", Mingus.window)
+  Mingus.warningsPane:SetPoint("TOPLEFT", tabFrame, "BOTTOMLEFT")
+  Mingus.warningsPane:SetPoint("BOTTOMRIGHT", Mingus.window, "BOTTOMRIGHT")
 
   Mingus.window:SetScript(
     "OnKeyDown",
@@ -71,8 +82,10 @@ function Mingus:InitializeMainWindow()
   )
 
   Mingus:InitializeUpdatePane()
+  Mingus:InitializeWarningsPane()
 
   Mingus.updatePane:Show()
   Mingus.checkPane:Hide()
   Mingus.settingsPane:Hide()
+  Mingus.warningsPane:Hide()
 end

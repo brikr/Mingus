@@ -60,13 +60,20 @@ Mingus.waMetadata = {
   },
   -- Obsolete
   ["Mythic- Core"] = {
+    uid = "brII87rOnHy",
     obsolete = true,
+    obsoleteReason = "We no longer require or maintain any of the auras in this pack."
   },
-  ["Liberation of Undermine"] = {
-    displayName = "Reloe Liberation of Undermine",
-    obsolete = true,
-  },
+  -- Don't want to mark this obsolete because it's technically fine to use it and just not use the mechanical auras in
+  -- Liquid pack. Will mark obsolete next patch.
+  -- ["Liberation of Undermine"] = {
+  --   displayName = "Reloe Liberation of Undermine",
+  --   obsolete = true,
+  --   obsoleteReason = "Consider switching to Liquid auras for mechanical auras."
+  -- },
   ["Northern Sky Liberation of Undermine"] = {
+    uid = "iXVEQvJZNKR",
     obsolete = true,
+    obsoleteReason = "We are using Liquid auras for assignments now."
   },
 }
