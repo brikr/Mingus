@@ -28,7 +28,7 @@ local function AuraRowElementInitializer(row, aura)
 
     row.infoContainer = CreateFrame("Frame", nil, row)
     row.infoContainer.title = row.infoContainer:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
-    row.infoContainer.title:SetPoint("TOPLEFT", row.infoContainer, "TOPLEFT", 8, 0)
+    row.infoContainer.title:SetPoint("TOPLEFT", row.infoContainer, "TOPLEFT", 0, 0)
     row.infoContainer.title:SetTextColor(Mingus.theme.onSurface:GetRGBA())
     row.infoContainer.description = row.infoContainer:CreateFontString(nil, "OVERLAY", "GameFontNormal")
     row.infoContainer.description:SetPoint("TOPLEFT", row.infoContainer.title, "BOTTOMLEFT", 0, -8)
@@ -48,9 +48,9 @@ local function AuraRowElementInitializer(row, aura)
     row.installContainer:SetHeight(rowHeight)
     row.installContainer:SetWidth(100)
 
-    row.infoContainer:SetPoint("LEFT", row, "LEFT")
+    row.infoContainer:SetPoint("LEFT", row, "LEFT", 16, 0)
     row.infoContainer:SetPoint("RIGHT", row.installContainer, "LEFT", -8, 0)
-    row.installContainer:SetPoint("RIGHT", row, "RIGHT", -8, 0)
+    row.installContainer:SetPoint("RIGHT", row, "RIGHT", -16, 0)
   end
 
   -- Set data

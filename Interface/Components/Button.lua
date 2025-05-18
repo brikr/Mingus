@@ -3,13 +3,11 @@ local _, Mingus = ...
 function Mingus:CreateButton(parent, text, OnClick)
   local button = CreateFrame("Button", nil, parent)
 
-  button.backgroundColor = Mingus.theme.primary
-
   button:SetScript("OnClick", OnClick)
 
   button.texture = button:CreateTexture(nil, "BACKGROUND")
   button.texture:SetAllPoints()
-  button.texture:SetColorTexture(button.backgroundColor:GetRGBA())
+  button.texture:SetColorTexture(Mingus.theme.primary:GetRGBA())
 
   button.highlight = button:CreateTexture(nil, "HIGHLIGHT")
   button.highlight:SetAllPoints()

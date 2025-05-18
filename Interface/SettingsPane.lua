@@ -1,8 +1,15 @@
 local _, Mingus = ...
 
 function Mingus:InitializeSettingsPane()
-  local nyiText = Mingus.settingsPane:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
-  nyiText:SetPoint("CENTER", Mingus.settingsPane, "CENTER")
-  nyiText:SetTextColor(Mingus.theme.onSurface:GetRGBA())
-  nyiText:SetText("Coming soon")
+  local minimapCheck = Mingus:CreateCheckbox(
+    Mingus.settingsPane,
+    "Hide minimap icon when auras are up to date",
+    function(checked)
+      MingusSaved.minimap.hideWhenUpToDate = checked
+      Mingus:UpdateMinimapIcon()
+    end,
+    MingusSaved.minimap.hideWhenUpToDate
+  )
+
+  minimapCheck:SetPoint("TOPLEFT", Mingus.settingsPane, "TOPLEFT", 16, -16)
 end

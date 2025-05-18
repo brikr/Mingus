@@ -24,14 +24,16 @@ end
 function Mingus:UpdateMinimapIcon()
   if AreWarningsPresent() then
     Mingus.LDB.icon = [[Interface\AddOns\Mingus\Media\Textures\minimap_warning.tga]]
-    LDBIcon:Show()
+    LDBIcon:Show("Mythic Minus")
   elseif AreUpdatesRequired() then
     Mingus.LDB.icon = [[Interface\AddOns\Mingus\Media\Textures\minimap_update.tga]]
-    LDBIcon:Show()
+    LDBIcon:Show("Mythic Minus")
   else
     Mingus.LDB.icon = [[Interface\AddOns\Mingus\Media\Textures\minimap.tga]]
-    if MingusSaved.minimap.hide then
-      LDBIcon:Hide()
+    if MingusSaved.minimap.hideWhenUpToDate then
+      LDBIcon:Hide("Mythic Minus")
+    else
+      LDBIcon:Show("Mythic Minus")
     end
   end
 end

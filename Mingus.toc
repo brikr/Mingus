@@ -13,6 +13,7 @@ embeds.xml
 
 Interface/Theme.lua
 Interface/Components/Button.lua
+Interface/Components/Checkbox.lua
 Interface/Components/Window.lua
 
 Interface/OldAddOnWarning.lua

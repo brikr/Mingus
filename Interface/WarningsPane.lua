@@ -1,6 +1,6 @@
 local _, Mingus = ...
 
-local rowHeight = 30
+local rowHeight = 40
 local dataProvider, noWarningsText
 
 local function WarningRowElementInitializer(row, warning)
@@ -9,8 +9,8 @@ local function WarningRowElementInitializer(row, warning)
     row.content = true
 
     row.container = CreateFrame("Frame", nil, row)
-    row.container:SetPoint("TOPLEFT", row, "TOPLEFT", 8, -8)
-    row.container:SetPoint("BOTTOMRIGHT", row, "BOTTOMRIGHT", -8, 8)
+    row.container:SetPoint("TOPLEFT", row, "TOPLEFT", 16, -16)
+    row.container:SetPoint("BOTTOMRIGHT", row, "BOTTOMRIGHT", -16, 16)
 
     row.text = row.container:CreateFontString(nil, "OVERLAY", "GameFontNormal")
     row.text:SetAllPoints()
