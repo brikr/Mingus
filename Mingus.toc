@@ -6,7 +6,7 @@
 ## IconTexture: Interface\AddOns\Mingus\Media\Textures\MMLogo.blp
 ## SavedVariables: MingusSaved
 ## Dependencies: WeakAuras
-## OptionalDeps: CustomNames, Grid2, ElvUI, Cell, MythicMinusMedia, VuhDo
+## OptionalDeps: DevTool, CustomNames, Grid2, ElvUI, Cell, MythicMinusMedia, VuhDo
 ## Category: Mythic Minus
 
 embeds.xml
