@@ -51,6 +51,4 @@ function Mingus:InitializeMinimapIcon()
     }
   )
   LDBIcon:Register("Mythic Minus", Mingus.LDB, MingusSaved.minimap)
-
-  Mingus:UpdateMinimapIcon()
 end
