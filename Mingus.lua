@@ -12,11 +12,14 @@ eventFrame:SetScript("OnEvent", function(_, event, ...)
     if addOnName == "Mingus" then
       if not MingusSaved then MingusSaved = {} end
 
+      Mingus:InitializeMinimapIcon()
+
       Mingus:InitializeWeakAuras()
       Mingus:InitializeMainWindow()
 
       Mingus:EnumerateWarnings()
-      Mingus:InitializeMinimapIcon()
+      Mingus:UpdateMinimapIcon()
+
       Mingus:MaybeShowOldAddOnWarning()
     end
   end
