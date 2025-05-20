@@ -8,7 +8,6 @@ local function AreUpdatesRequired()
   for name, aura in pairs(Mingus.wa) do
     if not aura.optional and not aura.obsolete then
       if not Mingus:IsAuraUpToDate(aura) then
-        print("updates required because", aura.displayName)
         return true
       end
     end
