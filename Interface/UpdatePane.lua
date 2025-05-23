@@ -69,6 +69,7 @@ local function AuraRowElementInitializer(row, aura)
     row.installContainer.upToDate:Hide()
   else
     row.installContainer.button:Hide()
+    row.installContainer.upToDate:SetText("Up to date (v" .. aura.version .. ")")
     row.installContainer.upToDate:Show()
   end
 end
