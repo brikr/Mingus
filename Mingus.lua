@@ -11,15 +11,23 @@ eventFrame:SetScript("OnEvent", function(_, event, ...)
 
     if addOnName == "Mingus" then
       if not MingusSaved then MingusSaved = {} end
-
+      -- Minimap icon before anything else since things in WeakAuras.lua hook into it
       Mingus:InitializeMinimapIcon()
 
+      -- Packaged WA parsing and installed WA utility
       Mingus:InitializeWeakAuras()
+
+      -- UI
       Mingus:InitializeMainWindow()
 
+      -- Calling the aforementioned installed WA utility
       Mingus:EnumerateWarnings()
       Mingus:UpdateMinimapIcon()
 
+      -- Ready to listen/send
+      Mingus:InitializeComms()
+
+      -- Warn about old addon
       Mingus:MaybeShowOldAddOnWarning()
     end
   end

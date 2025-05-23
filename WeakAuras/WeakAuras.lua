@@ -1,4 +1,4 @@
-local _, Mingus = ...
+local addOnName, Mingus = ...
 
 local LibSerialize = LibStub("LibSerialize")
 local LibDeflate = LibStub("LibDeflate")
@@ -24,6 +24,38 @@ function Mingus:IsAuraUpToDate(aura)
   if not data then return false end
   local installedVersion = data.version
   return installedVersion >= aura.version
+end
+
+-- Populate the check info used by group checker
+function Mingus:GetVersionCheckInfo()
+  local checkInfo = {
+    mingus = {
+      version = C_AddOns.GetAddOnMetadata(addOnName, "version"),
+    },
+    wa = {},
+  }
+
+  for name, aura in pairs(Mingus.wa) do
+    if not aura.obsolete then
+      if aura.auraUpdater and C_AddOns.IsAddOnLoaded("AuraUpdater") then
+        checkInfo.wa[name] = {
+          version = "au"
+        }
+      else
+        local waData = WeakAuras.GetData(installedUIDToID[aura.uid])
+        local version = 0
+        if waData then
+          version = waData.version
+        end
+
+        checkInfo.wa[name] = {
+          version = version
+        }
+      end
+    end
+  end
+
+  return checkInfo
 end
 
 -- If the installed version of this aura has any Load: Never or sound actions, copy them to the one being imported

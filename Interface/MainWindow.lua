@@ -43,14 +43,13 @@ function Mingus:InitializeMainWindow()
   warningsTab.texture:SetColorTexture(Mingus.theme.surfaceContainer:GetRGBA())
   warningsTab:SetPoint("TOPLEFT", updateTab, "TOPRIGHT", 8, 0)
 
-  -- TODO
-  -- local checkTab = Mingus:CreateButton(tabFrame, "Group check", function() ShowPane("check") end)
-  -- checkTab.texture:SetColorTexture(Mingus.theme.surfaceContainer:GetRGBA())
-  -- checkTab:SetPoint("TOPLEFT", updateTab, "TOPRIGHT", 8, 0)
+  local checkTab = Mingus:CreateButton(tabFrame, "Group check", function() ShowPane("check") end)
+  checkTab.texture:SetColorTexture(Mingus.theme.surfaceContainer:GetRGBA())
+  checkTab:SetPoint("TOPLEFT", warningsTab, "TOPRIGHT", 8, 0)
 
   local settingsTab = Mingus:CreateButton(tabFrame, "Settings", function() ShowPane("settings") end)
   settingsTab.texture:SetColorTexture(Mingus.theme.surfaceContainer:GetRGBA())
-  settingsTab:SetPoint("TOPLEFT", warningsTab, "TOPRIGHT", 8, 0)
+  settingsTab:SetPoint("TOPLEFT", checkTab, "TOPRIGHT", 8, 0)
 
   Mingus.updatePane = CreateFrame("Frame", "MingusUpdatePane", Mingus.window)
   Mingus.updatePane:SetPoint("TOPLEFT", tabFrame, "BOTTOMLEFT")
@@ -84,6 +83,7 @@ function Mingus:InitializeMainWindow()
 
   Mingus:InitializeUpdatePane()
   Mingus:InitializeWarningsPane()
+  Mingus:InitializeCheckPane()
   Mingus:InitializeSettingsPane()
 
   Mingus.updatePane:Show()

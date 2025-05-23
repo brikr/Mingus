@@ -19,6 +19,7 @@ Interface/Components/Window.lua
 Interface/OldAddOnWarning.lua
 Interface/UpdatePane.lua
 Interface/WarningsPane.lua
+Interface/CheckPane.lua
 Interface/SettingsPane.lua
 Interface/MainWindow.lua
 
@@ -28,5 +29,6 @@ WeakAuras/WeakAuras.lua
 
 MinimapIcon.lua
 Warnings.lua
+Comm.lua
 
 Mingus.lua
