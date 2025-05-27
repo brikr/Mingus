@@ -18,6 +18,7 @@ local function RequestVersionCheckThrottled()
 end
 
 function Mingus:InsertIntoCheckPaneTable(player, checkInfo)
+  lastUpdateTime = GetTime()
   DevTool:AddData(player, "player")
   DevTool:AddData(checkInfo, "checkInfo")
 end
@@ -46,6 +47,7 @@ function Mingus:InitializeCheckPane()
 
   dataProvider:SetSortComparator(
     function(info1, info2)
+      return info1.name > info2.name
     end
   )
 end
