@@ -56,7 +56,8 @@ Mingus.waMetadata = {
   },
   -- Guild raid pack
   ["M- Undermine"] = {
-    description = "Guild-specific Undermine pack",
+    description = "Guild-specific Undermine pack. Only contains convenience auras in Undermine.",
+    optional = true,
   },
   -- Obsolete
   ["Mythic- Core"] = {

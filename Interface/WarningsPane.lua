@@ -1,6 +1,6 @@
 local _, Mingus = ...
 
-local rowHeight = 40
+local rowHeight = 80
 local dataProvider, noWarningsText
 
 local function WarningRowElementInitializer(row, warning)
