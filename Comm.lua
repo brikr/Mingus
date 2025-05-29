@@ -17,7 +17,8 @@ local function ReceiveVersionCheckTable(_, msg, _, sender)
   local success, checkInfo = LibSerialize:Deserialize(serialized)
   if not success then return end
 
-  Mingus:InsertIntoCheckPaneTable(sender, checkInfo)
+  checkInfo.name = sender
+  Mingus:InsertIntoCheckPaneTable(checkInfo)
 end
 
 local function SendVersionCheckTable()

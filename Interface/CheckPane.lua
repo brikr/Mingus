@@ -1,11 +1,18 @@
 local _, Mingus = ...
 
 local lastUpdateTime = 0
-local rowHeight = 50
+local rowHeight = 100
 local dataProvider
 
 
+---@param row Frame
 local function PlayerCheckRowElementInitializer(row, playerCheckInfo)
+  if not row.content then
+    row.content = true
+
+    row.text = row:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+    row.text:SetAllPoints()
+  end
 end
 
 local function RequestVersionCheckThrottled()
@@ -17,10 +24,10 @@ local function RequestVersionCheckThrottled()
   end
 end
 
-function Mingus:InsertIntoCheckPaneTable(player, checkInfo)
+function Mingus:InsertIntoCheckPaneTable(checkInfo)
   lastUpdateTime = GetTime()
-  DevTool:AddData(player, "player")
-  DevTool:AddData(checkInfo, "checkInfo")
+  DevTool:AddData(checkInfo, "checkInfo " .. checkInfo.name)
+  dataProvider:Insert(checkInfo)
 end
 
 function Mingus:InitializeCheckPane()

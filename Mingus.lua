@@ -1,7 +1,9 @@
 local _, Mingus = ...
 
+--@debug@
 -- Debug: make Mingus global so I can /dump it
 _G["Mingus"] = Mingus
+--@end-debug@
 
 local eventFrame = CreateFrame("Frame")
 eventFrame:RegisterEvent("ADDON_LOADED")
