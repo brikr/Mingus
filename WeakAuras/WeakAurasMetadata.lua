@@ -16,6 +16,10 @@ Mingus.waMetadata = {
     description = "Libraries and shared functions used by Liquid stuff",
     auraUpdater = true,
   },
+  ["Liquid - Nerub-ar Palace"] = {
+    description = "Liquid's Nerub-ar Palace pack. This is only needed if you're doing Nerub-ar Palace sales.",
+    optional = true,
+  },
   ["Liquid - Liberation of Undermine"] = {
     description =
     "Liquid's Undermine pack. Contains both assignments and mechanic auras. The mechanic auras are set to Load: Never by default.",

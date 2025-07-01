@@ -24,6 +24,7 @@ function Mingus:InitializeMainWindow()
   Mingus.window:SetFrameStrata("HIGH")
   Mingus.window:SetPoint("CENTER")
   Mingus.window:SetSize(width, height)
+  Mingus.window:SetMovable(true)
   Mingus.window:Hide()
 
   local tabFrame = CreateFrame("Frame", "MingusTabFrame", Mingus.window)
@@ -34,6 +35,24 @@ function Mingus:InitializeMainWindow()
   tabFrame.background:SetAllPoints()
   tabFrame.background:SetTexture("Interface/Buttons/WHITE8x8")
   tabFrame.background:SetColorTexture(Mingus.theme.surfaceContainer:GetRGBA())
+
+  -- Window moving handlers
+  tabFrame:SetScript(
+    "OnMouseDown",
+    function(_, btn)
+      if btn == "LeftButton" then
+        Mingus.window:StartMoving()
+      end
+    end
+  )
+  tabFrame:SetScript(
+    "OnMouseUp",
+    function(_, btn)
+      if btn == "LeftButton" then
+        Mingus.window:StopMovingOrSizing()
+      end
+    end
+  )
 
   local updateTab = Mingus:CreateButton(tabFrame, "Update", function() ShowPane("update") end)
   updateTab.texture:SetColorTexture(Mingus.theme.surfaceContainer:GetRGBA())
@@ -66,6 +85,10 @@ function Mingus:InitializeMainWindow()
   Mingus.settingsPane = CreateFrame("Frame", "MingusSettingsPane", Mingus.window)
   Mingus.settingsPane:SetPoint("TOPLEFT", tabFrame, "BOTTOMLEFT")
   Mingus.settingsPane:SetPoint("BOTTOMRIGHT", Mingus.window, "BOTTOMRIGHT")
+
+  local closeButton = Mingus:CreateButton(tabFrame, "X", function() Mingus.window:Hide() end)
+  closeButton.texture:SetColorTexture(Mingus.theme.surfaceContainer:GetRGBA())
+  closeButton:SetPoint("RIGHT", tabFrame, "RIGHT", -8, 0)
 
   Mingus.window:SetScript(
     "OnKeyDown",
