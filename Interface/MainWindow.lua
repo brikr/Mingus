@@ -68,6 +68,10 @@ function Mingus:InitializeMainWindow()
   Mingus.settingsPane:SetPoint("TOPLEFT", tabFrame, "BOTTOMLEFT")
   Mingus.settingsPane:SetPoint("BOTTOMRIGHT", Mingus.window, "BOTTOMRIGHT")
 
+  local closeButton = Mingus:CreateButton(tabFrame, "X", function() Mingus.window:Hide() end)
+  closeButton.texture:SetColorTexture(Mingus.theme.surfaceContainer:GetRGBA())
+  closeButton:SetPoint("RIGHT", tabFrame, "RIGHT", -8, 0)
+
   Mingus.window:SetScript(
     "OnKeyDown",
     function(_, key)
