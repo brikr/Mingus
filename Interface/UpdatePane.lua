@@ -21,6 +21,7 @@ local function HandleAuraButtonClick(aura)
   end)
 end
 
+---@param row Frame
 local function AuraRowElementInitializer(row, aura)
   -- Create UI if it doesn't exist
   if not row.content then
