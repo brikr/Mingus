@@ -23,6 +23,7 @@ function Mingus:IsAuraUpToDate(aura)
   local data = WeakAuras.GetData(installedUIDToID[aura.uid])
   if not data then return false end
   local installedVersion = data.version
+  if not installedVersion then return false end
   return installedVersion >= aura.version
 end
 
