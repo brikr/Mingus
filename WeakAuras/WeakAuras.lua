@@ -11,12 +11,22 @@ function Mingus:IsAuraInstalled(aura)
     return true
   end
 
+  if aura.atrocity and C_AddOns.IsAddOnLoaded("AtrocityUI") then
+    -- Assume Atrocity UI got our back (no chance)
+    return true
+  end
+
   return installedUIDToID[aura.uid] ~= nil
 end
 
 function Mingus:IsAuraUpToDate(aura)
   if aura.auraUpdater and C_AddOns.IsAddOnLoaded("AuraUpdater") then
     -- Assume AuraUpdater got our back
+    return true
+  end
+
+  if aura.atrocity and C_AddOns.IsAddOnLoaded("AtrocityUI") then
+    -- Assume Atrocity UI got our back (no chance)
     return true
   end
 

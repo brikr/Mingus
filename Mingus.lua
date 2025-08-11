@@ -5,6 +5,7 @@ _G["Mingus"] = Mingus
 
 local eventFrame = CreateFrame("Frame")
 eventFrame:RegisterEvent("ADDON_LOADED")
+eventFrame:RegisterEvent("PLAYER_LOGIN")
 eventFrame:SetScript("OnEvent", function(_, event, ...)
   if event == "ADDON_LOADED" then
     local addOnName = ...
@@ -18,10 +19,13 @@ eventFrame:SetScript("OnEvent", function(_, event, ...)
       Mingus:InitializeMainWindow()
 
       Mingus:EnumerateWarnings()
-      Mingus:UpdateMinimapIcon()
 
       Mingus:MaybeShowOldAddOnWarning()
     end
+  elseif event == "PLAYER_LOGIN" then
+    -- LibDBIcon updates icon visibility with this event which would typically override the hideWhenUpToDate setting, so
+    -- we need to update via this event as well
+    Mingus:UpdateMinimapIcon()
   end
 end)
 

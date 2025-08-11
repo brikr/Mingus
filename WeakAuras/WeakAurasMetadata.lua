@@ -40,6 +40,7 @@ Mingus.waMetadata = {
     description =
     "Anchors for Liquid raid auras. Use these to change where you want Liquid auras to show on your screen.",
     auraUpdater = true,
+    atrocity = true,
   },
   -- Northern Sky we want to keep
   ["Northern Sky - Database & Functions"] = {
@@ -67,6 +68,7 @@ Mingus.waMetadata = {
   ["Interrupt Anchor - All Bosses"] = {
     displayName = "Interrupt Anchor",
     description = "Supports interrupt assignments via MRT note.",
+    atrocity = true,
   },
   -- Guild raid pack
   ["M- Undermine"] = {
