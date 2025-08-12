@@ -70,12 +70,13 @@ Mingus.waMetadata = {
     description = "Supports interrupt assignments via MRT note.",
     atrocity = true,
   },
-  -- Guild raid pack
+  -- Obsolete
   ["M- Undermine"] = {
     description = "Guild-specific Undermine pack. Only contains convenience auras in Undermine.",
     optional = true,
+    obsolete = true,
+    obsoleteReason = "We no longer require or maintain any of the auras in this pack.",
   },
-  -- Obsolete
   ["Mythic- Core"] = {
     uid = "brII87rOnHy",
     obsolete = true,
