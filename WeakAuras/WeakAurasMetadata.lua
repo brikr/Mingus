@@ -73,7 +73,6 @@ Mingus.waMetadata = {
   -- Obsolete
   ["M- Undermine"] = {
     description = "Guild-specific Undermine pack. Only contains convenience auras in Undermine.",
-    optional = true,
     obsolete = true,
     obsoleteReason = "We no longer require or maintain any of the auras in this pack.",
   },
