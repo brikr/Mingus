@@ -68,7 +68,7 @@ jobs:
       uses: actions/create-release@v1
       with:
         tag_name: ${{ steps.bump-version.outputs.new_version }}
-        release_name: Release v${{ steps.bump-version.outputs.new_version }} (automated)
+        release_name: ${{ steps.bump-version.outputs.new_version }} (automated)
         body: Automated WeakAuras update and patch version bump.
         draft: false
         prerelease: false
