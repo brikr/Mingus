@@ -32,6 +32,7 @@ end)
 SLASH_MINGUS1 = "/mingus"
 SLASH_MINGUS2 = "/mm"
 SLASH_MINGUSCENTER1 = "/wheremingus"
+SLASH_MINGUSIMPORT1 = "/mmi"
 
 function SlashCmdList.MINGUS()
   Mingus.window:SetShown(not Mingus.window:IsShown())
@@ -42,4 +43,12 @@ function SlashCmdList.MINGUSCENTER()
   Mingus.window:ClearAllPoints()
   Mingus.window:SetPoint("CENTER")
   Mingus.window:SetShown(true)
+end
+
+function SlashCmdList.MINGUSIMPORT(auraId)
+  if Mingus.wa[auraId] then
+    Mingus:ImportAura(Mingus.wa[auraId])
+  else
+    print("Aura " .. auraId .. " not found")
+  end
 end

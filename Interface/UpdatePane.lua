@@ -14,11 +14,7 @@ local function GetAuraButtonText(aura)
 end
 
 local function HandleAuraButtonClick(aura)
-  Mingus:ImportAura(aura, function()
-    Mingus:RefreshUpdatePaneEntry(aura.uid)
-    Mingus:EnumerateWarnings()
-    Mingus:UpdateMinimapIcon()
-  end)
+  Mingus:ImportAura(aura)
 end
 
 local function AuraRowElementInitializer(row, aura)

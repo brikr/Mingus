@@ -101,7 +101,7 @@ local function ParseImportString(import)
   return data
 end
 
-function Mingus:ImportAura(aura, callbackFunc)
+function Mingus:ImportAura(aura)
   local installedAuraData = WeakAuras.GetData(installedUIDToID[aura.uid])
   local newAura = ParseImportString(aura.import)
 
@@ -124,7 +124,10 @@ function Mingus:ImportAura(aura, callbackFunc)
       if not success then return end
 
       installedUIDToID[aura.uid] = id
-      callbackFunc(id)
+
+      Mingus:RefreshUpdatePaneEntry(aura.uid)
+      Mingus:EnumerateWarnings()
+      Mingus:UpdateMinimapIcon()
     end
   )
 end
