@@ -6,7 +6,7 @@ on:
     paths:
       - wago-fetcher/**
   schedule:
-    - cron: '0 15 * * *'
+    - cron: '0 21 * * *'
 
 jobs:
   fetch-weakauras:
