@@ -94,12 +94,12 @@ function Mingus:InitializeUpdatePane()
 
   dataProvider = CreateDataProvider()
   local scrollView = CreateScrollBoxListLinearView()
-  scrollView:SetDataProvider(dataProvider)
-
-  ScrollUtil.InitScrollBoxListWithScrollBar(scrollFrame, scrollBar, scrollView)
 
   scrollView:SetElementExtent(rowHeight)
   scrollView:SetElementInitializer("Frame", AuraRowElementInitializer)
+  scrollView:SetDataProvider(dataProvider)
+
+  ScrollUtil.InitScrollBoxListWithScrollBar(scrollFrame, scrollBar, scrollView)
 
   dataProvider:SetSortComparator(
     function(aura1, aura2)
