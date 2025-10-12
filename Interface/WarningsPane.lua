@@ -52,12 +52,12 @@ function Mingus:InitializeWarningsPane()
 
   dataProvider = CreateDataProvider()
   local scrollView = CreateScrollBoxListLinearView()
-  scrollView:SetDataProvider(dataProvider)
-
-  ScrollUtil.InitScrollBoxListWithScrollBar(scrollFrame, scrollBar, scrollView)
 
   scrollView:SetElementExtent(rowHeight)
   scrollView:SetElementInitializer("Frame", WarningRowElementInitializer)
+  scrollView:SetDataProvider(dataProvider)
+
+  ScrollUtil.InitScrollBoxListWithScrollBar(scrollFrame, scrollBar, scrollView)
 
   noWarningsText = Mingus.warningsPane:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
   noWarningsText:SetPoint("CENTER", Mingus.warningsPane, "CENTER")
